@@ -3,14 +3,13 @@ import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/themes'
 
 import { BrowserRouter } from 'react-router-dom'
+import { Router } from './Router'
 function App() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <div className="App">
-          Hello world!
-        </div>
+        <Router />
       </BrowserRouter>
       <GlobalStyle />
     </ThemeProvider>
