@@ -10,14 +10,14 @@ import { TimeLine } from './pages/TimeLine'
 export function Router() {
   return (
     <Routes>
-      <Route path='timeline' element={<TimeLine />} />
-      <Route path='showcase' element={<ShowcaseLayout />} >
-        <Route path='react' element={<ShowcaseReact />} />
-        <Route path='vue' element={<ShowcaseVue />} />
+      <Route path="timeline" element={<TimeLine />} />
+      <Route path="showcase">
+        <Route path="react" element={<ShowcaseReact />} />
+        <Route path="vue" element={<ShowcaseVue />} />
       </Route>
-      <Route path='project' element={<ProjectLayout />} >
-        <Route path='todo-list' element={<TodoList />} />
-        <Route path='little-blog' element={<LittleBlog />} />
+      <Route path="project" element={<ProjectLayout />}>
+        <Route path="todo-list" element={<TodoList />} />
+        <Route path="little-blog" element={<LittleBlog />} />
       </Route>
     </Routes>
   )
