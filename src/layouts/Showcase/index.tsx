@@ -1,5 +1,5 @@
 import { ArrowLeft, ArrowRight } from 'phosphor-react'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { Container, Header, Line, Subtitle, Title } from './styled'
 
@@ -23,8 +23,8 @@ export function ShowcaseLayout({
 }: ShowcaseLayoutProps) {
   return (
     <Container className="h-full" tone={tone}>
-      <Header>
-        <h1>
+      <Header data-aos="fade-down" data-aos-duration="500">
+        <h1 data-aos="fade-down">
           {leftLink && (
             <NavLink to={leftLink}>
               <ArrowLeft size={24} weight="bold" className="arrow_btn -mt-4" />
@@ -39,13 +39,14 @@ export function ShowcaseLayout({
               Entre<strong>Linhas</strong>
             </span>
 
-            <Subtitle>{subtitle}</Subtitle>
+            <Subtitle data-aos="fade-down" data-aos-duration="500">
+              {subtitle}
+            </Subtitle>
           </Title>
           <Line
             className={`${rightLink ? 'w-8' : 'w-16'} mx-4 opacity-500`}
             tone={tone}
           ></Line>
-
           {rightLink && (
             <NavLink to={rightLink} className="arrow_btn -mt-4">
               <ArrowRight size={24} weight="bold" />
