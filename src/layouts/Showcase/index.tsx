@@ -3,6 +3,11 @@ import { ReactNode, useEffect } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { Container, Header, Line, Subtitle, Title } from './styled'
 
+export interface ProjectButtonProps {
+  letter: string
+  url: string
+  isAvailable: boolean
+}
 export interface ShowcaseLayoutProps {
   subtitle: string
   children: ReactNode
@@ -12,6 +17,7 @@ export interface ShowcaseLayoutProps {
     background: string
     primary: string
   }
+  projects: Array<ProjectButtonProps>
 }
 
 export function ShowcaseLayout({
@@ -20,6 +26,7 @@ export function ShowcaseLayout({
   tone,
   leftLink,
   rightLink,
+  projects,
 }: ShowcaseLayoutProps) {
   return (
     <Container className="h-full" tone={tone}>
@@ -54,6 +61,18 @@ export function ShowcaseLayout({
           )}
         </h1>
       </Header>
+
+      <nav className="mt-48 pl-24 2xl:pl-64 w-10/12 xl:w-11/12 absolute flex flex-col justify-center text-2xl z-50">
+        <div>
+          {
+            projects.map((project) => {
+              return (
+                <NavLink to={project.url}>{project.letter}</NavLink>
+              )
+            })
+          }
+        </div>
+      </nav>
       {children}
       <Outlet />
     </Container>
