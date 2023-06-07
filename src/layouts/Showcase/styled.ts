@@ -1,13 +1,16 @@
 import styled from 'styled-components'
+import { ShowcaseLayoutProps } from '.'
+import { NavLink } from 'react-router-dom'
 
-interface ThemeProps {
+interface ShowcaseProps {
   tone: {
     background: string
     primary: string
   }
 }
 
-export const Container = styled.div<ThemeProps>`
+// eslint-disable-next-line no-undef
+export const Container = styled.div<ShowcaseProps>`
   color: ${(props) => {
     console.log(props)
     return props.theme['gray-100']
@@ -43,7 +46,7 @@ export const Header = styled.header`
   }
 `
 
-export const Title = styled.div<ThemeProps>`
+export const Title = styled.div<ShowcaseProps>`
   display: flex;
   flex-direction: column;
   font-size: 30px;
@@ -65,10 +68,35 @@ export const Subtitle = styled.span`
   margin-top: -4px;
 `
 
-export const Line = styled.p<ThemeProps>`
+export const Line = styled.p<ShowcaseProps>`
   background-color: ${(props) => props.tone.primary};
   border-radius: 2px;
   height: 1px;
   opacity: 0.4;
   margin-top: -16px;
+`
+
+export const ProjectsNavigation = styled.nav`
+  font-family: t26-carbon, monospace;
+  font-weight: 400;
+
+  a {
+    font-family: t26-carbon, monospace;
+  }
+`
+
+export const ProjectButton = styled(NavLink)`
+  border: 1px solid ${(props) => props.theme['gray-100']};
+  color: ${(props) => props.theme['gray-100']};
+
+  transition: all 0.5s ease;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+
+  &+.proj_link {
+    margin-left: 20px;
+  }
 `

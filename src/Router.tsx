@@ -18,6 +18,7 @@ export function Router() {
       <Route path="project" element={<ProjectLayout />}>
         <Route path="todo-list" element={<TodoList />} />
         <Route path="little-blog" element={<LittleBlog />} />
+        <Route path="ignite-timer" element={<LittleBlog />} />
       </Route>
     </Routes>
   )

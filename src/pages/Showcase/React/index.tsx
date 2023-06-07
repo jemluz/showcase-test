@@ -3,10 +3,55 @@ import { blueTone } from '../../../styles/themes'
 
 const projectsButtons: Array<ProjectButtonProps> = [
   {
-    letter: 'c',
+    letter: 'l',
     url: '/project/little-blog',
     isAvailable: true
-  } as ProjectButtonProps
+  } as ProjectButtonProps,
+  {
+    letter: 't',
+    url: '/project/todo-list',
+    isAvailable: true
+  } as ProjectButtonProps,
+  {
+    letter: 'i',
+    url: '/project/ignite-timer',
+    isAvailable: true
+  } as ProjectButtonProps,
+  {
+    letter: 'l',
+    url: '/project/little-bdffsdfog',
+    isAvailable: true
+  } as ProjectButtonProps,
+  {
+    letter: 't',
+    url: '/project/todasdasd',
+    isAvailable: true
+  } as ProjectButtonProps,
+  {
+    letter: 'i',
+    url: '/project/iasdade-timer',
+    isAvailable: true
+  } as ProjectButtonProps,
+  {
+    letter: 'l',
+    url: '/project/littlsdfsdg',
+    isAvailable: true
+  } as ProjectButtonProps,
+  {
+    letter: 't',
+    url: '/project/tdfdfist',
+    isAvailable: true
+  } as ProjectButtonProps,
+  {
+    letter: 't',
+    url: '/project/tasdasdst',
+    isAvailable: true
+  } as ProjectButtonProps,
+  {
+    letter: 't',
+    url: '/projectasadasdlist',
+    isAvailable: true
+  } as ProjectButtonProps,
 ]
 
 export function ShowcaseReact() {
@@ -16,10 +61,6 @@ export function ShowcaseReact() {
       tone={blueTone}
       rightLink="/showcase/vue"
       projects={projectsButtons}
-    >
-      <div>
-        <h1>meus projs em react</h1>
-      </div>
-    </ShowcaseLayout>
+    />
   )
 }

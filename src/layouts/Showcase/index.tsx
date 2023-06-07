@@ -1,7 +1,7 @@
-import { ArrowLeft, ArrowRight } from 'phosphor-react'
+import { ArrowLeft, ArrowRight, ListBullets } from 'phosphor-react'
 import { ReactNode, useEffect } from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
-import { Container, Header, Line, Subtitle, Title } from './styled'
+import { NavLink } from 'react-router-dom'
+import { Container, Header, Line, ProjectButton, ProjectsNavigation, Subtitle, Title } from './styled'
 
 export interface ProjectButtonProps {
   letter: string
@@ -10,7 +10,6 @@ export interface ProjectButtonProps {
 }
 export interface ShowcaseLayoutProps {
   subtitle: string
-  children: ReactNode
   leftLink?: string
   rightLink?: string
   tone: {
@@ -22,12 +21,43 @@ export interface ShowcaseLayoutProps {
 
 export function ShowcaseLayout({
   subtitle,
-  children,
   tone,
   leftLink,
   rightLink,
   projects,
 }: ShowcaseLayoutProps) {
+  let numberOfLines = 0;
+
+  useEffect(() => {
+    generateProjectLines();
+  }, [projects])
+
+  function generateProjectLines(): void {
+    if (projects.length > 0) {
+      const totalElements = projects.length;
+      let lastMultiple = 0;
+
+      // divide array by three (lines)
+      for (let i = 0; i < projects.length; i++) {
+        const isNotZero = i !== 0;
+        const isThreeMultiple = i % 3 == 0;
+
+        // define three multiple
+        if (isNotZero && isThreeMultiple) {
+          lastMultiple = i;
+        }
+
+        // use multiple to calculate how many lines
+        numberOfLines = lastMultiple / 3;
+
+        // if has an incomplete line at end
+        if (totalElements > lastMultiple) {
+          numberOfLines++
+        }
+      }
+    }
+  }
+
   return (
     <Container className="h-full" tone={tone}>
       <Header data-aos="fade-down" data-aos-duration="500">
@@ -62,19 +92,18 @@ export function ShowcaseLayout({
         </h1>
       </Header>
 
-      <nav className="mt-48 pl-24 2xl:pl-64 w-10/12 xl:w-11/12 absolute flex flex-col justify-center text-2xl z-50">
-        <div>
+      <ProjectsNavigation className="mt-48 pl-24 2xl:pl-64 w-10/12 xl:w-11/12 absolute flex flex-col justify-center text-2xl z-50">
+
+        <div className='row-1 flex justify-center mr-52 mt-16'>
           {
-            projects.map((project) => {
+            projects.map((proj) => {
               return (
-                <NavLink to={project.url}>{project.letter}</NavLink>
+                <ProjectButton key={proj.url} to={proj.url} className="px-4 py-2 rounded-lg opacity-70 proj_link">{proj.letter}</ProjectButton>
               )
             })
           }
         </div>
-      </nav>
-      {children}
-      <Outlet />
+      </ProjectsNavigation>
     </Container>
   )
 }
