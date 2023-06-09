@@ -1,7 +1,7 @@
-import { ArrowLeft, ArrowRight, ListBullets } from 'phosphor-react'
-import { ReactElement, ReactNode, useEffect } from 'react'
+import { ArrowLeft, ArrowRight } from 'phosphor-react'
+import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Container, Header, Line, Subtitle, Title } from './styled'
+import { CallToAction, Container, Header, Line, Subtitle, Title } from './styled'
 import { ProjectsNavigation } from './ProjectsNavigation'
 
 export interface ProjectButtonProps {
@@ -120,6 +120,17 @@ export function ShowcaseLayout({
           )}
         </h1>
       </Header>
+
+      <CallToAction tone={tone} data-aos="fade-right" data-aos-duration="1000" className="titulo mt-48 absolute text-right sm:w-6/12 sm:ml-24 md:w-10/12 lg:-ml-6 xl:w-full">
+        <h2 className="flex justify-center items-center md:mx-auto md:w-4/12">
+          <span className="first py-2 pl-32 text-lg sm:pl-32 md:-ml-64 lg:pl-64">Aperte uma te</span>
+          <span className="second text-lg">cla</span>
+        </h2>
+
+        <p className="third mt-2 pl-32 text-sm flex justify-center opacity-70 sm:w-10/12 md:pl-6 lg:pl-48  xl:pl-64">
+          para ver um projeto
+        </p>
+      </CallToAction>
 
       <ProjectsNavigation lines={lines} />
     </Container>

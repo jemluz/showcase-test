@@ -1,6 +1,4 @@
 import styled from 'styled-components'
-import { ShowcaseLayoutProps } from '.'
-import { NavLink } from 'react-router-dom'
 
 interface ShowcaseProps {
   tone: {
@@ -73,4 +71,29 @@ export const Line = styled.p<ShowcaseProps>`
   height: 1px;
   opacity: 0.4;
   margin-top: -16px;
+`
+
+export const CallToAction = styled.div<ShowcaseProps>`
+  font-family: t26-carbon, monospace;
+  font-weight: 600;
+
+  h2 {
+    font-weight: lighter;
+    font-size: 12px;
+
+    .first {
+      background:  ${(props) => props.tone.primary + '10'};
+      color: ${(props) => props.tone.primary};
+    }
+
+    .second {
+      background-color: transparent;
+      color: ${(props) => props.theme['gray-100']};
+    }
+
+  }
+
+  .third {
+    font-weight: 400;
+  }
 `

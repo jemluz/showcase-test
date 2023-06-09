@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const ProjectsContainer = styled.nav`
   margin-left: -100px;
+  margin-top: 100px;
 
   a {
     font-weight: 400;
