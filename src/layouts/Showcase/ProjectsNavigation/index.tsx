@@ -19,7 +19,7 @@ export function ProjectsNavigation({ lines }: ProjectsNavigationProps) {
   }, [waitBeforeShow]);
 
   return (
-    isLoaded ? <ProjectsContainer className="flex flex-col justify-center text-2xl z-50">
+    isLoaded ? <ProjectsContainer className="absolute flex flex-col justify-center text-2xl z-50">
       {
         lines && lines.map((line, index) => {
           let id = Math.random();
@@ -28,7 +28,7 @@ export function ProjectsNavigation({ lines }: ProjectsNavigationProps) {
           )
         })
       }
-    </ProjectsContainer> : <CircleNotchCustom color="white" weight="duotone" className="mt-48 w-auto absolute flex flex-col justify-center text-2xl z-50">
+    </ProjectsContainer> : <CircleNotchCustom color="white" weight="duotone" className="mt-48 w-auto flex flex-col justify-center text-2xl z-50">
       <animate
         attributeName="opacity"
         values="0;1;0"
