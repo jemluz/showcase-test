@@ -1,7 +1,8 @@
 import { ArrowLeft, ArrowRight, ListBullets } from 'phosphor-react'
-import { ReactNode, useEffect } from 'react'
+import { ReactElement, ReactNode, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Container, Header, Line, ProjectButton, ProjectsNavigation, Subtitle, Title } from './styled'
+import { Container, Header, Line, Subtitle, Title } from './styled'
+import { ProjectsNavigation } from './ProjectsNavigation'
 
 export interface ProjectButtonProps {
   letter: string
@@ -26,13 +27,20 @@ export function ShowcaseLayout({
   rightLink,
   projects,
 }: ShowcaseLayoutProps) {
-  let numberOfLines = 0;
+  const totalProjects = projects.length;
+
+  // total / 3 arredondado para string fixa e convertido para numero novamente
+  let numberOfLines = parseInt((totalProjects / 3).toFixed());
+  numberOfLines = ((totalProjects % 3) > 0) ? (numberOfLines + 1) : numberOfLines;
+
+  let lines: ProjectButtonProps[][] = [[]];
 
   useEffect(() => {
-    generateProjectLines();
+    calculateProjectLines();
+    generateLinesMultiArray();
   }, [projects])
 
-  function generateProjectLines(): void {
+  function calculateProjectLines(): void {
     if (projects.length > 0) {
       const totalElements = projects.length;
       let lastMultiple = 0;
@@ -53,6 +61,27 @@ export function ShowcaseLayout({
         // if has an incomplete line at end
         if (totalElements > lastMultiple) {
           numberOfLines++
+        }
+      }
+    }
+  }
+
+  function generateLinesMultiArray() {
+    for (let currentLine = 0; currentLine < numberOfLines; currentLine++) {
+      lines[currentLine] = [];
+
+      let lineStartAt = currentLine === 0 ? currentLine : (currentLine * 3);
+      let lineEndsAt = lineStartAt + 2;
+
+      if (projects.length / 3 > lines.length) {
+      }
+
+      for (let p = 0; p < totalProjects; p++) {
+        let isPartOfCurrentLine = (p <= lineEndsAt) && (p >= lineStartAt);
+        const rest = p % 3; // equals 0, 1, or 2
+
+        if (isPartOfCurrentLine) {
+          lines[currentLine][rest] = projects[p];
         }
       }
     }
@@ -92,18 +121,7 @@ export function ShowcaseLayout({
         </h1>
       </Header>
 
-      <ProjectsNavigation className="mt-48 pl-24 2xl:pl-64 w-10/12 xl:w-11/12 absolute flex flex-col justify-center text-2xl z-50">
-
-        <div className='row-1 flex justify-center mr-52 mt-16'>
-          {
-            projects.map((proj) => {
-              return (
-                <ProjectButton key={proj.url} to={proj.url} className="px-4 py-2 rounded-lg opacity-70 proj_link">{proj.letter}</ProjectButton>
-              )
-            })
-          }
-        </div>
-      </ProjectsNavigation>
+      <ProjectsNavigation lines={lines} />
     </Container>
   )
 }

@@ -12,7 +12,6 @@ interface ShowcaseProps {
 // eslint-disable-next-line no-undef
 export const Container = styled.div<ShowcaseProps>`
   color: ${(props) => {
-    console.log(props)
     return props.theme['gray-100']
   }};
   background: linear-gradient(
@@ -74,29 +73,4 @@ export const Line = styled.p<ShowcaseProps>`
   height: 1px;
   opacity: 0.4;
   margin-top: -16px;
-`
-
-export const ProjectsNavigation = styled.nav`
-  font-family: t26-carbon, monospace;
-  font-weight: 400;
-
-  a {
-    font-family: t26-carbon, monospace;
-  }
-`
-
-export const ProjectButton = styled(NavLink)`
-  border: 1px solid ${(props) => props.theme['gray-100']};
-  color: ${(props) => props.theme['gray-100']};
-
-  transition: all 0.5s ease;
-
-  &:hover,
-  &:focus {
-    opacity: 1;
-  }
-
-  &+.proj_link {
-    margin-left: 20px;
-  }
 `
