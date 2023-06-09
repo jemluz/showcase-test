@@ -2,8 +2,8 @@ import { CircleNotch } from "phosphor-react";
 import styled from "styled-components";
 
 export const ProjectsContainer = styled.nav`
-  margin-left: -100px;
-  margin-top: 100px;
+  margin-left: calc((100vw - 500px) / 2);
+  margin-top: 250px;
 
   a {
     font-weight: 400;

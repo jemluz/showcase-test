@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { CallToAction, Container, Header, Line, Subtitle, Title } from './styled'
 import { ProjectsNavigation } from './ProjectsNavigation'
+import { Parallax } from './Parallax'
 
 export interface ProjectButtonProps {
   letter: string
@@ -133,6 +134,8 @@ export function ShowcaseLayout({
       </CallToAction>
 
       <ProjectsNavigation lines={lines} />
+
+      <Parallax />
     </Container>
   )
 }
