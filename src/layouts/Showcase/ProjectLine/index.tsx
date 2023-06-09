@@ -12,8 +12,9 @@ export function ProjectLine({ line, lineNumber }: ProjectLineProps) {
       {
         line && line.map((proj, index) => {
           let id = Math.random();
+          const isUnpaired: boolean = lineNumber % 2 !== 0;
           return (
-            <ProjectButton key={id} to={proj.url} odd={(lineNumber % 2 === 0)} className="px-4 py-2 rounded-lg opacity-70 proj_link" data-aos="fade-down" data-aos-duration={700 * index}>
+            <ProjectButton key={id} to={proj.url} odd={isUnpaired.toString()} className="px-4 py-2 rounded-lg opacity-70 proj_link" data-aos="fade-down" data-aos-duration={700 * index}>
               {proj.letter}
             </ProjectButton>
           )

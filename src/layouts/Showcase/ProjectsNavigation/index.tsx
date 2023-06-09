@@ -19,7 +19,7 @@ export function ProjectsNavigation({ lines }: ProjectsNavigationProps) {
   }, [waitBeforeShow]);
 
   return (
-    isLoaded ? <ProjectsContainer className=" flex flex-col justify-center text-2xl z-50">
+    isLoaded ? <ProjectsContainer className="flex flex-col justify-center text-2xl z-50">
       {
         lines && lines.map((line, index) => {
           let id = Math.random();

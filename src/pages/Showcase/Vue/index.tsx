@@ -8,26 +8,6 @@ const projectsButtons: Array<ProjectButtonProps> = [
     isAvailable: true
   } as ProjectButtonProps,
   {
-    letter: '2',
-    url: '/project/todo-list',
-    isAvailable: true
-  } as ProjectButtonProps,
-  {
-    letter: '3',
-    url: '/project/ignite-timer',
-    isAvailable: true
-  } as ProjectButtonProps,
-  {
-    letter: '4',
-    url: '/project/little-bdffsdfog',
-    isAvailable: true
-  } as ProjectButtonProps,
-  {
-    letter: '5',
-    url: '/project/todasdasd',
-    isAvailable: true
-  } as ProjectButtonProps,
-  {
     letter: '6',
     url: '/project/iasdade-timer',
     isAvailable: true
